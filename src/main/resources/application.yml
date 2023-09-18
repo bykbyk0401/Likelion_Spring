@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+    url: jdbc:h2.tcp://localhost/~/test #뒤에 쿼리문 붙일수있다? h2에 나와있음. h2 user table 에러, nonkeyword=~~?
+
+    jpa:
+      show-sql: true
+      hibernate:
+        ddl-auto: create
+        #create하면 안되는게 뭐라구?

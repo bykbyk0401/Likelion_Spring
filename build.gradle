@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.10' //우리가 지정
+	id 'io.spring.dependency-management' version '1.1.3'
+}
+
+group = 'com.likelion'  //우리가 지정
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'  //우리가 지정
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {  //우리가 지정 = django의 requirements.txt 부분
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok' //코드를 처음 바꿀 때 사용하는거라 compileonly
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	//runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+	//runtimeOnly 'org.postgresql:postgresql'
+	annotationProcessor 'org.projectlombok:lombok' //lombok은 annotation 기반 (@)
+	testImplementation 'org.springframework.boot:spring-boot-starter-test' //test 패키지에서만 실행
+	testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
